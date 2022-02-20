@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import SignIn from './components/login';
 import SignUp from './components/signup';
+import Dashboard from './components/dashboard/dashboard'
 
 function App() {
   const user = useSelector((state) => state.user)
@@ -16,6 +17,7 @@ function App() {
       <Routes>
           <Route path="/signin" element={<SignIn/>}/>
           <Route path="/signup" element={<SignUp />}/>
+          <Route path="/" element={<Dashboard />}/>
           {/* this is the correct route */}
           {/* <AuthedRoute authed={user.authenticated}  path="/upload" Component={FileUpload}/>
           <AuthedRoute authed={user.authenticated}  path="/" Component={LandingPage}/> */}
