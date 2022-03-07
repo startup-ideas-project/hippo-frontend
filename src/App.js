@@ -9,6 +9,8 @@ import {
 import SignIn from './components/login';
 import SignUp from './components/signup';
 import Dashboard from './components/dashboard/dashboard'
+import DashboardContent from './components/dashboard/dashboard-content';
+import DataboardContent from './components/dashboard/databoard-content';
 
 
 function App() {
@@ -18,7 +20,8 @@ function App() {
       <Routes>
           <Route path="/signin" element={<SignIn/>}/>
           <Route path="/signup" element={<SignUp />}/>
-          <Route path="/" element={<Dashboard />}/>
+          <Route path="/databoard" element={<Dashboard component={<DataboardContent />}/>}/>
+          <Route path="/" element={<Dashboard component={<DashboardContent />}/>}/>
           {/* this is the correct route */}
           {/* <AuthedRoute authed={user.authenticated}  path="/upload" Component={FileUpload}/>
           <AuthedRoute authed={user.authenticated}  path="/" Component={LandingPage}/> */}
