@@ -4,7 +4,6 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import ListSubheader from '@mui/material/ListSubheader';
 import Dashboard from '@material-ui/icons/Dashboard';
-import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
 
@@ -23,6 +22,13 @@ export const mainListItems =  (
                     <Dashboard />
                 </ListItemIcon>
                 <ListItemText primary="Data board" />
+              </ListItemButton>
+
+            <ListItemButton component={Link} to='/register-data'>
+                <ListItemIcon>
+                    <Dashboard />
+                </ListItemIcon>
+                <ListItemText primary="Register data" />
               </ListItemButton>
         </React.Fragment>
     )

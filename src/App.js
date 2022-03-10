@@ -11,6 +11,7 @@ import SignUp from './components/signup';
 import Dashboard from './components/dashboard/dashboard'
 import DashboardContent from './components/dashboard/dashboard-content';
 import DataboardContent from './components/dashboard/databoard-content';
+import RegisterData from './components/dashboard/register-data';
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
           <Route path="/signin" element={<SignIn/>}/>
           <Route path="/signup" element={<SignUp />}/>
           <Route path="/databoard" element={<Dashboard component={<DataboardContent />}/>}/>
+          <Route path="/register-data" element={<Dashboard component={<RegisterData />}/>}/>
           <Route path="/" element={<Dashboard component={<DashboardContent />}/>}/>
           {/* this is the correct route */}
           {/* <AuthedRoute authed={user.authenticated}  path="/upload" Component={FileUpload}/>

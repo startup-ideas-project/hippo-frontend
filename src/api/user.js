@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const userServiceURL = "http://localhost:4000/"
+const userServiceURL = "http://localhost:4000/" || process.env.backendURL
 
 const loginUser = (userName, password) => {
     const body = {
