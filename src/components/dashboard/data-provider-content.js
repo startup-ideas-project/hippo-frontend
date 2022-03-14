@@ -23,6 +23,12 @@ export default function DataProviderContent() {
         DATA_MARKET_API.getDataMarket(user.user_id).then(_ => setDataMarket(_.data))
   },[user.user_id])
 
+  const handleOnApproveClick = (data) => {
+      DATA_REQUEST_API.dataRequestPermission({
+          uuid: data.id,
+          isApproved: "approved"
+      })
+  }
     return (
         <Box
         component="main"
@@ -58,8 +64,8 @@ export default function DataProviderContent() {
               <TableCell>{data.data_base_name}</TableCell>
               <TableCell>{data.data_provider_id}</TableCell>
               <TableCell>{data.modify_at}</TableCell>
-              <TableCell>{data.isApproved}</TableCell>
-              <TableCell align="right"><Button>Approved</Button></TableCell>
+              <TableCell>{data.isapproved}</TableCell>
+              <TableCell align="right"><Button onClick={() => handleOnApproveClick(data)}>Approve</Button><Button>Reject</Button></TableCell>
             </TableRow>
           ))}
         </TableBody>
@@ -74,7 +80,6 @@ export default function DataProviderContent() {
             <TableCell>Data</TableCell>
             <TableCell>Provider</TableCell>
             <TableCell>Created at</TableCell>
-            <TableCell align="right">Approval</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -83,7 +88,6 @@ export default function DataProviderContent() {
               <TableCell>{data.data_base_name}</TableCell>
               <TableCell>{data.data_provider_id}</TableCell>
               <TableCell>{data.modify_at}</TableCell>
-              <TableCell align="right"><Button>Approved</Button></TableCell>
             </TableRow>
           ))}
         </TableBody>

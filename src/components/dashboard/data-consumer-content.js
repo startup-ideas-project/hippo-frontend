@@ -12,7 +12,6 @@ import TableRow from '@mui/material/TableRow';
 import Title from './title';
 import { useSelector } from 'react-redux';
 import {DATA_REQUEST_API} from '../../api';
-import Button from '@mui/material/Button';
 
 export default function DataConsumerContent() {
     const user = useSelector((state) => state.user)
@@ -20,7 +19,6 @@ export default function DataConsumerContent() {
     useEffect(() => {
         DATA_REQUEST_API.getDataRequest(user.user_id).then(_ => setDataMarket(_.data))
   },[user.user_id]) 
-  console.log(dataMarket)
 
     return (
         <Box
@@ -40,14 +38,14 @@ export default function DataConsumerContent() {
           <Grid container spacing={3}>
             <Grid item xs={12}>
               <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
-              <Title>Data Marketplace</Title>
+              <Title>Data Consumer</Title>
       <Table size="small">
         <TableHead>
           <TableRow>
             <TableCell>Data</TableCell>
-            <TableCell>Consumer</TableCell>
+            <TableCell>Producer</TableCell>
             <TableCell>Requested Date</TableCell>
-            <TableCell align="right">Approval</TableCell>
+            <TableCell align="right">Permission</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -56,7 +54,7 @@ export default function DataConsumerContent() {
               <TableCell>{data.data_base_name}</TableCell>
               <TableCell>{data.data_provider_id}</TableCell>
               <TableCell>{data.modify_at}</TableCell>
-              <TableCell align="right"><Button>Request</Button></TableCell>
+              <TableCell align="right">{data.isapproved}</TableCell>
             </TableRow>
           ))}
         </TableBody>
