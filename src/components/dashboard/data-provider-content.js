@@ -14,19 +14,15 @@ import { useSelector } from 'react-redux';
 import {DATA_MARKET_API, DATA_REQUEST_API} from '../../api';
 import Button from '@mui/material/Button';
 
-export default function DataboardContent() {
+export default function DataProviderContent() {
     const user = useSelector((state) => state.user)
+    const [dataRequest, setDataRequest] = useState([])
     const [dataMarket, setDataMarket] = useState([])
     useEffect(() => {
-      DATA_MARKET_API.getDataMarket().then(_ => setDataMarket(_.data))
+        DATA_REQUEST_API.getDataRequest(user.user_id).then(_ => setDataRequest(_.data))
+        DATA_MARKET_API.getDataMarket(user.user_id).then(_ => setDataMarket(_.data))
   },[user.user_id])
 
-    const handleRequestOnClick = (data) => {
-      DATA_REQUEST_API.createDataRequest({
-        data_market_id : data.id,
-        consumer_id: user.user_id
-      })
-    }
     return (
         <Box
         component="main"
@@ -45,16 +41,40 @@ export default function DataboardContent() {
           <Grid container spacing={3}>
             <Grid item xs={12}>
               <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
-              <Title>Data Marketplace</Title>
+    <Title>Data provider requests</Title>
+      <Table size="small">
+        <TableHead>
+          <TableRow>
+            <TableCell>Data</TableCell>
+            <TableCell>Consumer</TableCell>
+            <TableCell>Requested Date</TableCell>
+            <TableCell>Status</TableCell>
+            <TableCell align="right">Approval</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {dataRequest.map(data => (
+            <TableRow key={data.id}>
+              <TableCell>{data.data_base_name}</TableCell>
+              <TableCell>{data.data_provider_id}</TableCell>
+              <TableCell>{data.modify_at}</TableCell>
+              <TableCell>{data.isApproved}</TableCell>
+              <TableCell align="right"><Button>Approved</Button></TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+
+    <br/>
+
+    <Title>Data in market</Title>
       <Table size="small">
         <TableHead>
           <TableRow>
             <TableCell>Data</TableCell>
             <TableCell>Provider</TableCell>
-            <TableCell>Last update</TableCell>
-            <TableCell>Description</TableCell>
-            <TableCell>Price per call</TableCell>
-            <TableCell align="right">Request</TableCell>
+            <TableCell>Created at</TableCell>
+            <TableCell align="right">Approval</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -63,9 +83,7 @@ export default function DataboardContent() {
               <TableCell>{data.data_base_name}</TableCell>
               <TableCell>{data.data_provider_id}</TableCell>
               <TableCell>{data.modify_at}</TableCell>
-              <TableCell>test DB</TableCell>
-              <TableCell>$0.12 / API call</TableCell>
-              <TableCell align="right"><Button onClick={() => handleRequestOnClick(data)}>Request</Button></TableCell>
+              <TableCell align="right"><Button>Approved</Button></TableCell>
             </TableRow>
           ))}
         </TableBody>

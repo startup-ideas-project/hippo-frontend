@@ -30,6 +30,20 @@ export const mainListItems =  (
                 </ListItemIcon>
                 <ListItemText primary="Register data" />
               </ListItemButton>
+
+            <ListItemButton component={Link} to='/data-provider-content'>
+                <ListItemIcon>
+                    <Dashboard />
+                </ListItemIcon>
+                <ListItemText primary="Data provider" />
+              </ListItemButton>
+
+            <ListItemButton component={Link} to='/data-consumer-content'>
+                <ListItemIcon>
+                    <Dashboard />
+                </ListItemIcon>
+                <ListItemText primary="Data consumer" />
+              </ListItemButton>
         </React.Fragment>
     )
 

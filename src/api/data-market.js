@@ -18,6 +18,11 @@ const createDataMarket = ({
     return axios.post(dataMarketURL, body)
 }
 
+const getDataMarket = () => {
+    return axios.post(dataMarketURL, {})
+}
+
 export {
-    createDataMarket
+    createDataMarket,
+    getDataMarket
 }

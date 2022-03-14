@@ -2,7 +2,8 @@ import {USER_AUTHENTICATED} from './user.types';
 
 const INITIAL_STATE = {
     name: "",
-    authenticated: false
+    authenticated: false,
+    user_id: "260e3372-afb9-479c-8c1a-bcd4d0e9a0ae"
 }
 
 const userReducer = (state = INITIAL_STATE, action) => {
