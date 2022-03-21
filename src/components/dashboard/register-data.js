@@ -10,13 +10,17 @@ import FormHelperText from '@mui/material/FormHelperText';
 import Input from '@mui/material/Input';
 import InputLabel from '@mui/material/InputLabel';
 import Button from '@mui/material/Button';
-import {DATA_MARKET_API} from '../../api'
+import {DATA_MARKET_API, IAM_MANAGEMENT_API} from '../../api'
+import { useSelector } from 'react-redux';
 
 export default function RegisterData() {
     const providerName = 'Test Provider'
     const data_provider_id = '260e3372-afb9-479c-8c1a-bcd4d0e9a0ae'
+    const encodedKey = useSelector((state) => state.user.encode_public_key)
     const [dataName, setDataName] = useState('')
     const [dataUrl, setDataURL] = useState('')
+    const [dataAccessKey, setDataAccessKey] = useState('')
+    const [dataSecretKey, setDataSecretKey] = useState('')
     const handlechange = (event, handler) => {
         handler(event.target.value);
       };
@@ -27,8 +31,14 @@ export default function RegisterData() {
         URL_to_IAM_key: dataUrl
     }
     
-    const handleSubmit = () => {
-        DATA_MARKET_API.createDataMarket(payload)
+    const handleSubmit = async () => {
+        const data = await DATA_MARKET_API.createDataMarket(payload)
+        IAM_MANAGEMENT_API.createIAMRole({
+            accessKey: dataAccessKey,
+            secretKey: dataSecretKey,
+            encodedKey,
+            dataMarketId: data.data
+        })
     }
     return (
         <Box
@@ -66,6 +76,16 @@ export default function RegisterData() {
         <InputLabel htmlFor="component-simple">Data URL</InputLabel>
         <Input id="component-simple" value={dataUrl} onChange={(event) => handlechange(event, setDataURL)} />
       </FormControl>
+
+<FormControl variant="standard">
+  <InputLabel htmlFor="component-simple">Data IAM Access Key</InputLabel>
+  <Input id="component-simple" value={dataAccessKey} onChange={(event) => handlechange(event, setDataAccessKey)} />
+</FormControl>
+
+<FormControl variant="standard">
+  <InputLabel htmlFor="component-simple">Data IAM Secret Key</InputLabel>
+  <Input id="component-simple" value={dataSecretKey} onChange={(event) => handlechange(event, setDataSecretKey)} />
+</FormControl>
 
               </Paper>
 

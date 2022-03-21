@@ -96,7 +96,7 @@ function Dashboard({component}) {
               noWrap
               sx={{ flexGrow: 1 }}
             >
-              Dashboard
+              Unleash Access
             </Typography>
           </Toolbar>
         </AppBar>
