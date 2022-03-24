@@ -6,7 +6,8 @@ export function Logo() {
     <Box
         component="img"
         sx={{
-        height: 200
+        height: 200,
+        width: 200
         }}
         alt="Your logo."
         src={'https://unleash-access-front-end-media.s3.amazonaws.com/LogoSample_ByTailorBrands.jpg'}
