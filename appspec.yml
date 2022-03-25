@@ -4,8 +4,7 @@ os: linux
 
 files:
   - source: /
-    destination: /app
-    overwrite: true
+    destination: /home/ec2-user/server
 
 permissions:
   - object: /
