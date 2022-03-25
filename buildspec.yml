@@ -3,12 +3,13 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      nodejs: 16
+      nodejs: 14
    
     commands:
-        # install npm
+        - npm i npm@latest -g
+        - npm cache clean --force
+        - rm -rf node_modules package-lock.json
         - npm install
-       
   build:
     commands:
         # run build script
