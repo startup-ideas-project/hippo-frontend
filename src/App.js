@@ -23,7 +23,7 @@ function App() {
       <Routes>
           <Route path="/signin" element={<SignIn/>}/>
           <Route path="/signup" element={<SignUp />}/>
-          <Route path="/landing-page" element={<LandingPage />} />
+          <Route path="/" element={<LandingPage />} />
           {/* Authed routes */}
           <Route element={<AuthedRoute />}>
             <Route path="/dashboard" element={<Dashboard component={<DashboardContent />}/>}/>
