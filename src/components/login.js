@@ -46,7 +46,7 @@ const useStyles = makeStyles((theme) => ({
 
 const SignIn = (props) => {
   const [userName, setUserName] = useState("")
-  const [userPassword, setUserPassword] = useState("") //needed to encrypt password before sending on wire
+  const [userPassword, setUserPassword] = useState("")
   const dispatch = useDispatch();
 
   const classes = useStyles();
