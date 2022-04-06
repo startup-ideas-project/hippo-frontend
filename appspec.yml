@@ -10,8 +10,7 @@ files:
 permissions:
   - object: /
     pattern: "**"
-    owner: ec2-user
-    group: ec2-user
+    owner: root
 
 hooks:
 
@@ -22,7 +21,7 @@ hooks:
 
   AfterInstall:
       - location: scripts/after_install.sh
-        timeout: 1000
+        timeout: 3000
         runas: root
 
   ApplicationStart:
