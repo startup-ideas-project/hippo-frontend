@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # navigate to app folder
-cd /app
+cd /home/ec2-user/server
 
 # install dependencies
 npm install
@@ -11,4 +11,4 @@ npm install
 npm install --save react react-scripts
 
 # install pm2 process manager
-# npm install pm2 -g
+npm install pm2 -g
