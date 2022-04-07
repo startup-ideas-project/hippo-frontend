@@ -5,7 +5,7 @@ cd /home/ec2-user/server/src
 
 # initial startup by running react-script "start", name process "marketing"
 # --watch watches and restarts if files change
-pm2 start ./node_modules/react-scripts/scripts/start.js --name "hippo-frontend" --watch
+pm2 start --name "hippo-frontend" npm -- start
 
 # auto restart server if shut down
 pm2 startup
