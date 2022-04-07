@@ -5,6 +5,8 @@ cd /home/ec2-user/server
 
 # install node and npm
 sudo apt install curl
+sudo apt install aptitude
 curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
-sudo apt-get -y install nodejs npm
+sudo aptitude install npm
+sudo yarn -y install nodejs 
 
