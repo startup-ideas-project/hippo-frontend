@@ -7,4 +7,4 @@ cd /app
 curl -sL https://rpm.nodesource.com/setup_14.x | sudo -E bash -
 yum -y install nodejs npm
 
-chmod +x ./*.sh
+chmod +x scripts/*.sh
