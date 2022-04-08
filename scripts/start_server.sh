@@ -3,7 +3,7 @@
 # navigate to app folder
 cd /home/ec2-user/server/src
 
-# initial startup by running react-script "start", name process "marketing"
+# initial startup by running react-script "start"
 # --watch watches and restarts if files change
 pm2 start yarn --name "hippo-frontend" -- start
 
