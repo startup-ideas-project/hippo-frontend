@@ -15,3 +15,5 @@ pm2 save
 
 # restart all processes - necessary to do this again?
 pm2 restart all
+
+#If this comment is here, meant that ec2 install with code deploy agent, nginx, load balancer is working together
