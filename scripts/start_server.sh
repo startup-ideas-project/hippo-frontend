@@ -5,7 +5,7 @@ cd /home/ec2-user/server/src
 
 # initial startup by running react-script "start"
 # --watch watches and restarts if files change
-pm2 start yarn --name "hippo-frontend" -- start
+pm2 start npm --name "hippo-frontend" -- start
 
 # auto restart server if shut down
 pm2 startup
