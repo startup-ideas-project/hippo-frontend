@@ -19,7 +19,7 @@ import AuthedRoute from './components/authed-route';
 
 function App() {
   return (
-    <Router>
+    <Router basename="#">
       <Routes>
           <Route path="/signin" element={<SignIn/>}/>
           <Route path="/signup" element={<SignUp />}/>
